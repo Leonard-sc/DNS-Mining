@@ -1,4 +1,2 @@
-def main():
-    print("hello12")
-
-    main()
+import numpy
+from sklearn.datasets import load_iris
