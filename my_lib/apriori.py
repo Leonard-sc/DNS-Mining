@@ -13,28 +13,43 @@ class Apriori(object):
         dns_trans = list(filter(lambda x: len(x) != 0, dns_trans))
         for order_item in self.dns_order_list:
             if(order_item[1]>=support):  # 如果大于最小支持度才加到表中
-                self.table[order_item[0]]={{order_item[0]:order_item[1]},None}  # 生成表
-
+                self.table[order_item[0]]=[order_item[1],None]  # 生成表
         self.root = tree.Node()
 
     def fp_tree(self):
         for trans in self.dns_trans:
-            for item,index in trans:
-                if(index==0):
-                    self.update(item,self.root)
+            self.update(trans,self.root)
 
-    def update(self,item,node):
-        if item in node.child_list:
-            node.child_dict[item].increase(1)
-        else:
-            if(self.table[item][1]==None):
-                self.table[item][1]=node
+
+
+    def update(self,trans,root):
+        for index,item in enumerate(trans):
+            # print(index)
+            # print(item)
+            node = root
+            for i in range(index):
+                node = node.child_dict[trans[i]]
+                node.increase(1)
+                # print("node-ip:",node.ip)
+                # print("node-mem:",node)
+            if item in node.child_dict:
+                node.child_dict[trans[i]]
             else:
-                next_node_link = self.table[item][1].node_link
-                while(next_node_link!=None):
-                    next_node_link = next_node_link.node_link
-                next_node_link = node
-            node.child_dicttree.Node(item,1,node)
+                add_node = tree.Node(item,1,node)
+                # print(add_node.ip)
+                node.child_dict.setdefault(item,add_node)
+                # print(len(node.child_dict))
+                print(node.ip)
+                print(node)
+                print(add_node.ip)
+                print(add_node)
+                if(self.table[item][1]==None):
+                    self.table[item][1]=add_node
+                else:
+                    next_node_link = self.table[item][1].node_link
+                    while(next_node_link!=None):
+                        next_node_link = next_node_link.node_link
+                    next_node_link = add_node
 
 class AprioriList(object):
     def __init__(self):

@@ -1,5 +1,5 @@
 class Node(object):
-    def __init__(self, ip='', num=0, parent_node=None, child_dict={}):
+    def __init__(self, ip='root', num=0, parent_node=None, child_dict={}):
         self.ip = ip
         self.count = num
         self.parent = parent_node
@@ -19,6 +19,7 @@ class Node(object):
         :return: none
         """
         print(' '*dep, self.ip, ' ', self.count)
-        for child in self.child_list:
+        for child in self.child_dict:
+            print(dep)
             child.show(dep+1)
 
