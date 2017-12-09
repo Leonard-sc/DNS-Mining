@@ -1,5 +1,4 @@
 import os
-import numpy as np
 
 class Data(object):
     """ Class for dns data
@@ -22,7 +21,7 @@ class Data(object):
         """read all dns record from every file."""
         for index,file_path in enumerate(self.file_path):
             # if (index==1):
-            #      break
+            #     break
             file_name=self.file_list[index]
             self.record[file_name] = []
             with open(file_path,'r') as file:
