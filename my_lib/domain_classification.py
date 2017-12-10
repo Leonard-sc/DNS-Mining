@@ -1,6 +1,6 @@
 import my_lib.data as dt
 import fileinput
-
+import sklearn
 data = dt.Data("../data")
 data.read_all()
 # 用户浏览网站字典，key值为用户IP，value为其浏览的网站
