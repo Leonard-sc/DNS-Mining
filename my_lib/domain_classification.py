@@ -58,20 +58,20 @@ user_list = [([0]*18) for i in range(user_num)]
 IP_List = list(user_log.keys())
 print(IP_List)
 # 所有域名集合
-# domain_list = []
-# for i in IP_List:
-#      for site in user_log[i]:
-#          site = site.split('.')
-#          if len(site) >= 3:
-#              if (len(site) >= 4):
-#                  site = site[site.index(site[-4:][0]):]
-#              else:
-#                  site = site[site.index(site[-3:][0]):]
-#          else:
-#              continue
-#          site = ".".join(site)
-#          if site not in domain_list:
-#              domain_list.append(site)
+domain_list = []
+for i in IP_List:
+     for site in user_log[i]:
+         site = site.split('.')
+         if len(site) >= 3:
+             if (len(site) >= 4):
+                 site = site[site.index(site[-4:][0]):]
+             else:
+                 site = site[site.index(site[-3:][0]):]
+         else:
+             continue
+         site = ".".join(site)
+         if site not in domain_list:
+             domain_list.append(site)
 
 
 # 标记域名类别
@@ -92,6 +92,12 @@ domain_label = {}
 #     print('10:经济')
 #     print('11:教育')
 #     print('12:其他')
+#     print('13:解决方案')
+#     print('14:视频')
+#     print('15:音乐')
+#     print('16:体育')
+#     print('17:娱乐')
+#     print('18:招聘')
 #     type = input("选择域名类别？")  # 根据输入判断域名类别
 #
 #     domain_label[item] = type
