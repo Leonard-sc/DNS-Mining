@@ -1,3 +1,4 @@
+import fileinput
 # d={'a':1,'b':0,'c':1}
 # keys = list(d.keys())
 # for k in keys:
@@ -6,9 +7,10 @@
 #
 # print(d)
 
-seq = ('1', '2', '3')
-seq1 = [0,1,2]
+# seq = ('1', '2', '3')
+# seq1 = [0,1,2]
+#
+# dict = {'a': 'hello', 'b': 'world', 'c': 'hello'}
+# dict = dict.fromkeys(seq)
+# print(dict)
 
-dict = {'a': 'hello', 'b': 'world', 'c': 'hello'}
-dict = dict.fromkeys(seq)
-print(dict)
