@@ -4,10 +4,17 @@ from my_lib import data as dt
 # rootNode.children['eye'] = fpGrowth.treeNode('eye',13,None)
 # rootNode.disp()
 def loadSimpDat():
-    data = dt.Data("D:\\DNS-Mining\\data")
+    data = dt.Data("./data")
     data.read_all()
     simpDat=data.dns_trans
     # simpDat = [
+    #     ['I1', 'I2', 'I5'],
+    #     ['I2', 'I4'],
+    #     ['I2', 'I3'],
+    #     ['I1', 'I3'],
+    #     ['I2', 'I3'],
+    #     ['I1', 'I3'],
+    #     ['I1', 'I2', 'I3'],
     #     ['I1', 'I2', 'I5'],
     #     ['I2', 'I4'],
     #     ['I2', 'I3'],
@@ -16,7 +23,6 @@ def loadSimpDat():
     #     ['I2', 'I3'],
     #     ['I1', 'I3'],
     #     ['I1', 'I2', 'I3', 'I5'],
-    #     ['I1', 'I2', 'I3'],
     # ]
     #print(simpDat)
     return simpDat
@@ -34,12 +40,13 @@ simpDat = loadSimpDat()
 initset = createInitset(simpDat)
 
 
-myFPtree,myHeaderTable = fpGrowth.createTree(initset, 520)
+myFPtree,myHeaderTable = fpGrowth.createTree(initset, 10000)
 #myFPtree.disp()
 
 #定义频繁集进行接收
 freqItems=[]
-fpGrowth.mineTree(myFPtree,myHeaderTable,520,set([]),freqItems)
+
+fpGrowth.mineTree(myFPtree,myHeaderTable, 10000, set([]),freqItems)
 file = open('freqItems.txt','w')
 for i in freqItems:
     file.write(str(i)+'\n')
